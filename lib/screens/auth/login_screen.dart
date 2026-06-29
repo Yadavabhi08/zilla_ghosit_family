@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 
 import '../../widgets/custom_button.dart';
 import '../../widgets/custom_textfield.dart';
-import '../family/choose_family_screen.dart';
 
 class LoginScreen extends StatefulWidget {
   const LoginScreen({super.key});
@@ -44,7 +44,7 @@ class _LoginScreenState extends State<LoginScreen> {
                 ),
               ),
 
-              const SizedBox(height: 15),
+              const SizedBox(height: 20),
 
               const Center(
                 child: Text(
@@ -62,8 +62,8 @@ class _LoginScreenState extends State<LoginScreen> {
                 child: Text(
                   "Stay Connected Together",
                   style: TextStyle(
-                    fontSize: 16,
                     color: Colors.grey,
+                    fontSize: 16,
                   ),
                 ),
               ),
@@ -149,7 +149,6 @@ class _LoginScreenState extends State<LoginScreen> {
               CustomButton(
                 title: "Continue",
                 onPressed: () {
-
                   if (nameController.text.trim().isEmpty) {
                     ScaffoldMessenger.of(context).showSnackBar(
                       const SnackBar(
@@ -168,13 +167,7 @@ class _LoginScreenState extends State<LoginScreen> {
                     return;
                   }
 
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                      builder: (context) =>
-                      const ChooseFamilyScreen(),
-                    ),
-                  );
+                  context.go('/choose-family');
                 },
               ),
 

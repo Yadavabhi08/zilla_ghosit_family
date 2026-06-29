@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 
 class ChooseFamilyScreen extends StatelessWidget {
   const ChooseFamilyScreen({super.key});
@@ -6,87 +7,50 @@ class ChooseFamilyScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: const Color(0xFFF8F9FA),
-      body: SafeArea(
-        child: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 25),
-          child: Column(
-            children: [
+      appBar: AppBar(
+        title: const Text("Choose Family"),
+      ),
+      body: Padding(
+        padding: const EdgeInsets.all(20),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            const Icon(
+              Icons.family_restroom,
+              size: 100,
+              color: Colors.blue,
+            ),
 
-              const SizedBox(height: 60),
+            const SizedBox(height: 30),
 
-              const Icon(
-                Icons.family_restroom,
-                size: 100,
-                color: Colors.blue,
+            SizedBox(
+              width: double.infinity,
+              height: 55,
+              child: ElevatedButton(
+                onPressed: () {
+                  context.go('/create-family');
+                },
+                child: const Text("Create Family"),
               ),
+            ),
 
-              const SizedBox(height: 20),
+            const SizedBox(height: 20),
 
-              const Text(
-                "Zilla Ghosit Family",
-                style: TextStyle(
-                  fontSize: 28,
-                  fontWeight: FontWeight.bold,
-                ),
+            SizedBox(
+              width: double.infinity,
+              height: 55,
+              child: OutlinedButton(
+                onPressed: () {
+                  ScaffoldMessenger.of(context).showSnackBar(
+                    const SnackBar(
+                      content: Text("Join Family Coming Soon"),
+                    ),
+                  );
+                },
+                child: const Text("Join Family"),
               ),
-
-              const SizedBox(height: 10),
-
-              const Text(
-                "Stay Connected Together",
-                style: TextStyle(
-                  color: Colors.grey,
-                  fontSize: 16,
-                ),
-              ),
-
-              const Spacer(),
-
-              SizedBox(
-                width: double.infinity,
-                height: 55,
-                child: ElevatedButton(
-                  onPressed: () {
-                    // Create Family Screen
-                  },
-                  child: const Text(
-                    "Create Family",
-                    style: TextStyle(fontSize: 18),
-                  ),
-                ),
-              ),
-
-              const SizedBox(height: 20),
-
-              const Text(
-                "OR",
-                style: TextStyle(
-                  fontWeight: FontWeight.bold,
-                  color: Colors.grey,
-                ),
-              ),
-
-              const SizedBox(height: 20),
-
-              SizedBox(
-                width: double.infinity,
-                height: 55,
-                child: OutlinedButton(
-                  onPressed: () {
-                    // Join Family Screen
-                  },
-                  child: const Text(
-                    "Join Family",
-                    style: TextStyle(fontSize: 18),
-                  ),
-                ),
-              ),
-
-              const Spacer(),
-
-            ],
-          ),
+            ),
+          ],
         ),
       ),
     );

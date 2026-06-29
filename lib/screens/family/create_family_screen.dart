@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 
 class CreateFamilyScreen extends StatefulWidget {
   const CreateFamilyScreen({super.key});
@@ -11,13 +12,13 @@ class _CreateFamilyScreenState extends State<CreateFamilyScreen> {
   final TextEditingController familyNameController =
   TextEditingController();
 
-  final TextEditingController descriptionController =
+  final TextEditingController familyDescriptionController =
   TextEditingController();
 
   @override
   void dispose() {
     familyNameController.dispose();
-    descriptionController.dispose();
+    familyDescriptionController.dispose();
     super.dispose();
   }
 
@@ -26,40 +27,71 @@ class _CreateFamilyScreenState extends State<CreateFamilyScreen> {
     return Scaffold(
       appBar: AppBar(
         title: const Text("Create Family"),
+        centerTitle: true,
       ),
       body: SingleChildScrollView(
         padding: const EdgeInsets.all(20),
         child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-
             const SizedBox(height: 20),
 
-            const CircleAvatar(
-              radius: 50,
-              child: Icon(
-                Icons.family_restroom,
-                size: 50,
+            Center(
+              child: CircleAvatar(
+                radius: 50,
+                backgroundColor: Colors.blue.shade100,
+                child: const Icon(
+                  Icons.family_restroom,
+                  size: 55,
+                  color: Colors.blue,
+                ),
               ),
             ),
 
             const SizedBox(height: 30),
 
+            const Text(
+              "Family Name",
+              style: TextStyle(
+                fontSize: 16,
+                fontWeight: FontWeight.bold,
+              ),
+            ),
+
+            const SizedBox(height: 8),
+
             TextField(
               controller: familyNameController,
-              decoration: const InputDecoration(
-                labelText: "Family Name",
-                border: OutlineInputBorder(),
+              decoration: InputDecoration(
+                hintText: "Enter family name",
+                prefixIcon: const Icon(Icons.groups),
+                border: OutlineInputBorder(
+                  borderRadius: BorderRadius.circular(15),
+                ),
               ),
             ),
 
             const SizedBox(height: 20),
 
+            const Text(
+              "Description (Optional)",
+              style: TextStyle(
+                fontSize: 16,
+                fontWeight: FontWeight.bold,
+              ),
+            ),
+
+            const SizedBox(height: 8),
+
             TextField(
-              controller: descriptionController,
+              controller: familyDescriptionController,
               maxLines: 3,
-              decoration: const InputDecoration(
-                labelText: "Description (Optional)",
-                border: OutlineInputBorder(),
+              decoration: InputDecoration(
+                hintText: "Write something about your family",
+                prefixIcon: const Icon(Icons.description),
+                border: OutlineInputBorder(
+                  borderRadius: BorderRadius.circular(15),
+                ),
               ),
             ),
 
@@ -70,32 +102,27 @@ class _CreateFamilyScreenState extends State<CreateFamilyScreen> {
               height: 55,
               child: ElevatedButton(
                 onPressed: () {
-
-                  if (familyNameController.text.isEmpty) {
-
+                  if (familyNameController.text.trim().isEmpty) {
                     ScaffoldMessenger.of(context).showSnackBar(
                       const SnackBar(
                         content: Text("Please enter family name"),
                       ),
                     );
-
                     return;
                   }
 
-                  ScaffoldMessenger.of(context).showSnackBar(
-                    const SnackBar(
-                      content: Text("Family Created Successfully"),
-                    ),
-                  );
 
+
+                  context.go('/home');
                 },
                 child: const Text(
                   "Create Family",
-                  style: TextStyle(fontSize: 18),
+                  style: TextStyle(
+                    fontSize: 18,
+                  ),
                 ),
               ),
             ),
-
           ],
         ),
       ),
