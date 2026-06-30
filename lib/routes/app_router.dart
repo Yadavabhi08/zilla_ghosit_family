@@ -5,6 +5,7 @@ import '../screens/family/choose_family_screen.dart';
 import '../screens/family/create_family_screen.dart';
 import '../screens/splash/splash_screen.dart';
 import '../screens/home/home_screen.dart';
+import '../screens/family/join_family_screen.dart';
 
 final GoRouter appRouter = GoRouter(
   initialLocation: '/',
@@ -28,6 +29,10 @@ final GoRouter appRouter = GoRouter(
     GoRoute(
       path: '/home',
       builder: (context, state) => const HomeScreen(),
+    ),
+    GoRoute(
+      path: '/join-family',
+      builder: (context, state) => const JoinFamilyScreen(),
     ),
   ],
 );

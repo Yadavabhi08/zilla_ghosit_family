@@ -32,38 +32,25 @@ class _CreateFamilyScreenState extends State<CreateFamilyScreen> {
       body: SingleChildScrollView(
         padding: const EdgeInsets.all(20),
         child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             const SizedBox(height: 20),
 
-            Center(
-              child: CircleAvatar(
-                radius: 50,
-                backgroundColor: Colors.blue.shade100,
-                child: const Icon(
-                  Icons.family_restroom,
-                  size: 55,
-                  color: Colors.blue,
-                ),
+            CircleAvatar(
+              radius: 50,
+              backgroundColor: Colors.blue.shade100,
+              child: const Icon(
+                Icons.family_restroom,
+                size: 55,
+                color: Colors.blue,
               ),
             ),
 
             const SizedBox(height: 30),
 
-            const Text(
-              "Family Name",
-              style: TextStyle(
-                fontSize: 16,
-                fontWeight: FontWeight.bold,
-              ),
-            ),
-
-            const SizedBox(height: 8),
-
             TextField(
               controller: familyNameController,
               decoration: InputDecoration(
-                hintText: "Enter family name",
+                hintText: "Family Name",
                 prefixIcon: const Icon(Icons.groups),
                 border: OutlineInputBorder(
                   borderRadius: BorderRadius.circular(15),
@@ -73,21 +60,11 @@ class _CreateFamilyScreenState extends State<CreateFamilyScreen> {
 
             const SizedBox(height: 20),
 
-            const Text(
-              "Description (Optional)",
-              style: TextStyle(
-                fontSize: 16,
-                fontWeight: FontWeight.bold,
-              ),
-            ),
-
-            const SizedBox(height: 8),
-
             TextField(
               controller: familyDescriptionController,
               maxLines: 3,
               decoration: InputDecoration(
-                hintText: "Write something about your family",
+                hintText: "Description (Optional)",
                 prefixIcon: const Icon(Icons.description),
                 border: OutlineInputBorder(
                   borderRadius: BorderRadius.circular(15),
@@ -111,15 +88,11 @@ class _CreateFamilyScreenState extends State<CreateFamilyScreen> {
                     return;
                   }
 
-
-
                   context.go('/home');
                 },
                 child: const Text(
                   "Create Family",
-                  style: TextStyle(
-                    fontSize: 18,
-                  ),
+                  style: TextStyle(fontSize: 18),
                 ),
               ),
             ),
