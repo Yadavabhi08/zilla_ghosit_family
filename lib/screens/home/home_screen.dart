@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
@@ -15,7 +16,6 @@ class HomeScreen extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-
             const Text(
               "Welcome 👋",
               style: TextStyle(
@@ -24,7 +24,7 @@ class HomeScreen extends StatelessWidget {
               ),
             ),
 
-            const SizedBox(height: 10),
+            const SizedBox(height: 8),
 
             const Text(
               "Yadav Family",
@@ -42,11 +42,17 @@ class HomeScreen extends StatelessWidget {
               shape: RoundedRectangleBorder(
                 borderRadius: BorderRadius.circular(15),
               ),
-              child: const ListTile(
-                leading: Icon(Icons.people, color: Colors.blue),
-                title: Text("Family Members"),
-                subtitle: Text("View all family members"),
-                trailing: Icon(Icons.arrow_forward_ios),
+              child: ListTile(
+                leading: const Icon(
+                  Icons.people,
+                  color: Colors.blue,
+                ),
+                title: const Text("Family Members"),
+                subtitle: const Text("View all family members"),
+                trailing: const Icon(Icons.arrow_forward_ios),
+                onTap: () {
+                  context.go('/members');
+                },
               ),
             ),
 
@@ -57,11 +63,17 @@ class HomeScreen extends StatelessWidget {
               shape: RoundedRectangleBorder(
                 borderRadius: BorderRadius.circular(15),
               ),
-              child: const ListTile(
-                leading: Icon(Icons.chat, color: Colors.green),
-                title: Text("Family Chat"),
-                subtitle: Text("Start chatting with your family"),
-                trailing: Icon(Icons.arrow_forward_ios),
+              child: ListTile(
+                leading: const Icon(
+                  Icons.chat,
+                  color: Colors.green,
+                ),
+                title: const Text("Family Chat"),
+                subtitle: const Text("Chat with family"),
+                trailing: const Icon(Icons.arrow_forward_ios),
+                onTap: () {
+                  context.go('/chat');
+                },
               ),
             ),
 
@@ -72,11 +84,17 @@ class HomeScreen extends StatelessWidget {
               shape: RoundedRectangleBorder(
                 borderRadius: BorderRadius.circular(15),
               ),
-              child: const ListTile(
-                leading: Icon(Icons.notifications, color: Colors.orange),
-                title: Text("Invitations"),
-                subtitle: Text("View invitations"),
-                trailing: Icon(Icons.arrow_forward_ios),
+              child: ListTile(
+                leading: const Icon(
+                  Icons.notifications,
+                  color: Colors.orange,
+                ),
+                title: const Text("Invitations"),
+                subtitle: const Text("View invitations"),
+                trailing: const Icon(Icons.arrow_forward_ios),
+                onTap: () {
+                  context.go('/invitation');
+                },
               ),
             ),
 
@@ -87,11 +105,17 @@ class HomeScreen extends StatelessWidget {
               shape: RoundedRectangleBorder(
                 borderRadius: BorderRadius.circular(15),
               ),
-              child: const ListTile(
-                leading: Icon(Icons.person, color: Colors.purple),
-                title: Text("Profile"),
-                subtitle: Text("Manage your profile"),
-                trailing: Icon(Icons.arrow_forward_ios),
+              child: ListTile(
+                leading: const Icon(
+                  Icons.person,
+                  color: Colors.purple,
+                ),
+                title: const Text("Profile"),
+                subtitle: const Text("Manage your profile"),
+                trailing: const Icon(Icons.arrow_forward_ios),
+                onTap: () {
+                  context.go('/profile');
+                },
               ),
             ),
           ],
